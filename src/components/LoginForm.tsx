@@ -1,9 +1,7 @@
 "use client";
 
-import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 import { Metadata } from "next";
 import { useState } from "react";
-import { actionCodeSettings } from "./RegisterForm";
 
 export const metadata: Metadata = {
   title: "Login",
