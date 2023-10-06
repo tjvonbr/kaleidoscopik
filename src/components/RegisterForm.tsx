@@ -1,6 +1,24 @@
 "use client";
 
+import { app } from "../../firebase";
+import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 import { useState } from "react";
+
+const auth = getAuth(app);
+
+const actionCodeSettings = {
+  url: "http://localhost:3000",
+  handleCodeInApp: true,
+  iOS: {
+    bundleId: "http://localhost:3000",
+  },
+  android: {
+    packageName: "http://localhost:3000",
+    installApp: true,
+    minimumVersion: "12",
+  },
+  dynamicLinkDomain: "http://localhost:3000",
+};
 
 export default function RegisterForm() {
   const [newUser, setNewUser] = useState({
@@ -13,9 +31,19 @@ export default function RegisterForm() {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Submitted");
+
+    try {
+      const response = await sendSignInLinkToEmail(
+        auth,
+        newUser.email,
+        actionCodeSettings
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
