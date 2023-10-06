@@ -1,7 +1,9 @@
 "use client";
 
+import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 import { Metadata } from "next";
 import { useState } from "react";
+import { actionCodeSettings } from "./RegisterForm";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -15,8 +17,10 @@ export default function LoginForm() {
     setEmail(e.target.value);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    console.log("Submitted!");
   }
 
   return (

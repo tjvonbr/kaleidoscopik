@@ -14,6 +14,8 @@
     "firebase-tools": "^12.6.2",
     "lucide-react": "^0.284.0",
     "next": "13.5.4",
+    "next-auth": "^4.23.2",
+    "nodemailer": "^6.9.5",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^1.14.0",
