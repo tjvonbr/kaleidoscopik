@@ -15,8 +15,10 @@ export default function LoginForm() {
     setEmail(e.target.value);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    console.log("Submitted!");
   }
 
   return (
