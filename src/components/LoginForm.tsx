@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { useState } from "react";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Login | Kaleidoscopik",
   description: "Login to your account",
 };
 

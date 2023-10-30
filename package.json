@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "node server"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -18,6 +19,9 @@
     "nodemailer": "^6.9.5",
     "react": "^18",
     "react-dom": "^18",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0",
     "tnl-midjourney-api": "^1.0.3",
     "zod": "^3.22.4"
