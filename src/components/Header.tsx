@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname, useSelectedLayoutSegment } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 export function Header() {
   const segment = useSelectedLayoutSegment();
@@ -11,7 +11,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "absolute top-0 left-0 h-20 w-full p-10 flex flex-row justify-between items-center border-b border-gray-200 text-black",
+        "absolute top-0 left-0 h-20 w-full p-10 flex flex-row justify-between items-center border-b border-gray-200 text-black z-50",
         isAuth ? "hidden" : ""
       )}
     >

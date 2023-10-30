@@ -20,11 +20,15 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         msg: body.prompt,
+        webhookOverride:
+          "https://a043-4-36-20-96.ngrok-free.app/api/webhooks/midjourney",
       }),
     });
 
-    return NextResponse.json(response);
+    const data = await response.json();
+
+    return new NextResponse(JSON.stringify(data), { status: 200 });
   } catch (error) {
-    console.log(error);
+    return new NextResponse(JSON.stringify(error), { status: 500 });
   }
 }

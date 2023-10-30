@@ -16,10 +16,6 @@ const getResultsSchema = z.object({
 
 export async function POST(req: NextRequest) {
   try {
-    const json = await req.json();
-    const body = getResultsSchema.parse(json);
-
-    console.log(body.imageUrl);
     return new NextResponse("Hello, world!");
   } catch (error) {
     console.log(error);
