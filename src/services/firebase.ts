@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAj6VXdm1gcWEM48g_3-vRmo4Q8RxbYKls",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "kaleidoscopik-d99d3.firebaseapp.com",
   projectId: "kaleidoscopik-d99d3",
   storageBucket: "kaleidoscopik-d99d3.appspot.com",
