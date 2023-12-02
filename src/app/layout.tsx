@@ -3,7 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kaleidoscopik",
+  title: "Libello",
   description: "Create your own AI-gnerated coloring books",
 };
 

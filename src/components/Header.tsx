@@ -16,7 +16,7 @@ export function Header() {
       )}
     >
       <div className="flex items-center space-x-10">
-        <span className="text-lg font-black">🎨 Kaleidoscopik</span>
+        <span className="text-lg font-black">🎨 Libello</span>
         <nav className="flex items-center space-x-4">
           <Link
             className="text-black text-sm font-medium hover:text-gray-500 transition-colors"
