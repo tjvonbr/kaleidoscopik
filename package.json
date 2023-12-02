@@ -17,6 +17,7 @@
     "next": "13.5.4",
     "next-auth": "^4.23.2",
     "nodemailer": "^6.9.5",
+    "openai": "^4.20.1",
     "react": "^18",
     "react-dom": "^18",
     "socket.io": "^4.7.2",
