@@ -1,14 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Zap } from "lucide-react";
-import useSWR from "swr";
-import Spinner from "./common/Spinner";
-import { useEffect } from "react";
-import { db } from "@/services/firebase";
-import { collection, addDoc, setDoc } from "firebase/firestore";
-import { io } from "socket.io-client";
 
 const buttons: string[] = [
   "U1",
@@ -22,23 +17,10 @@ const buttons: string[] = [
   "V4",
 ];
 
-const SOCKET_IO_SERVER_URL = "http://localhost:3000";
-
 export default function CreateOperations() {
+  const [imageUrl, setImageUrl] = useState<null | string>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
-  const [isMutating, setIsMutating] = useState(false);
-
-  useEffect(() => {
-    const socket = io(SOCKET_IO_SERVER_URL);
-
-    socket.on("the-next-leg", (data: any) => {
-      console.log("Received event:", data);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPrompt(e.target.value);
@@ -46,9 +28,9 @@ export default function CreateOperations() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setIsMutating(true);
+    setIsLoading(true);
 
-    const response = await fetch("/api/imagine", {
+    const response = await fetch("http://localhost:3000/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,11 +40,14 @@ export default function CreateOperations() {
       }),
     });
 
-    setIsMutating(false);
+    setIsLoading(false);
 
     if (!response.ok) {
       console.log("Something went wrong!");
     }
+
+    const { data } = await response.json();
+    setImageUrl(data[0].url);
   }
 
   return (
@@ -92,11 +77,17 @@ export default function CreateOperations() {
             className="flex justify-center items-center bg-black text-white rounded-md text-sm font-medium h-10 w-[100px]"
             onClick={handleSubmit}
           >
-            {isMutating ? "Generating..." : "Generate"}
+            {isLoading ? "Generating..." : "Generate"}
           </button>
         </form>
         <div className="mt-6">
-          <div className="h-[500px] w-[500px] flex flex-col justify-center items-center space-y-4 border rounded-md"></div>
+          {imageUrl ? (
+            <Link href="/">
+              <Image src={imageUrl} alt={prompt} width={500} height={500} />
+            </Link>
+          ) : (
+            <div className="h-[500px] w-[500px] flex flex-col justify-center items-center space-y-4 border rounded-md"></div>
+          )}
         </div>
         <div className="w-full mt-6 flex justify-center items-center space-x-2">
           {buttons.map((button: string, idx: number) => {

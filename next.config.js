@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.discordapp.com",
+        hostname: "oaidalleapiprodscus.blob.core.windows.net",
         port: "",
         pathname: "/**",
       },
