@@ -20,6 +20,7 @@
     "openai": "^4.20.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-to-print": "^2.14.15",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "swr": "^2.2.4",

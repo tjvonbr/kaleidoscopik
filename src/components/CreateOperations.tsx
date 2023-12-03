@@ -1,26 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { PrintableImage } from "./PrintableImage";
+import { useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
 import { Zap } from "lucide-react";
 
-const buttons: string[] = [
-  "U1",
-  "U2",
-  "U3",
-  "U4",
-  "🔄",
-  "V1",
-  "V2",
-  "V3",
-  "V4",
-];
+// Keep this here for development purposes to avoid making calls to OpenAI
+const testImgUrl =
+  "https://oaidalleapiprodscus.blob.core.windows.net/private/org-nlKxgKwNROEfS68Tr5qWFg99/user-5TOtUFOGV7FOActUOQWvYrAp/img-3URoqdAiboVtyh7lccDsLqgl.png?st=2023-12-02T21%3A52%3A37Z&se=2023-12-02T23%3A52%3A37Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-02T22%3A45%3A05Z&ske=2023-12-03T22%3A45%3A05Z&sks=b&skv=2021-08-06&sig=aJKeoITqg2tjUAS%2B1fA21p8RXQ%2BIB4kYD6%2BL2Il8Kc4%3D";
 
 export default function CreateOperations() {
-  const [imageUrl, setImageUrl] = useState<null | string>(null);
+  const [imageUrl, setImageUrl] = useState<null | string>(testImgUrl);
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
+
+  const printableImgRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => printableImgRef.current,
+  });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPrompt(e.target.value);
@@ -82,24 +81,24 @@ export default function CreateOperations() {
         </form>
         <div className="mt-6">
           {imageUrl ? (
-            <Link href="/">
-              <Image src={imageUrl} alt={prompt} width={500} height={500} />
-            </Link>
+            <>
+              <Image src={imageUrl} alt={prompt} height={500} width={500} />
+              <div style={{ display: "none" }}>
+                <PrintableImage
+                  alt={prompt}
+                  onClick={handlePrint}
+                  prompt={prompt}
+                  src={imageUrl}
+                  ref={printableImgRef}
+                />
+              </div>
+            </>
           ) : (
             <div className="h-[500px] w-[500px] flex flex-col justify-center items-center space-y-4 border rounded-md"></div>
           )}
         </div>
         <div className="w-full mt-6 flex justify-center items-center space-x-2">
-          {buttons.map((button: string, idx: number) => {
-            return (
-              <button
-                className="p-3 bg-gray-100 hover:bg-gray-200 transition-colors border border-gray-300 rounded-md text-sm text-black font-medium"
-                key={idx}
-              >
-                {button}
-              </button>
-            );
-          })}
+          <button onClick={handlePrint}>Print</button>
         </div>
       </div>
     </main>
