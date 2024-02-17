@@ -13,13 +13,11 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "rgb(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+        primary: "var(--primary)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

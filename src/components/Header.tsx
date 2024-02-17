@@ -11,21 +11,23 @@ export function Header() {
   return (
     <header
       className={cn(
-        "absolute top-0 left-0 h-20 w-full p-10 flex flex-row justify-between items-center border-b border-gray-200 text-black z-50",
+        "w-full px-10 py-5 border-b flex flex-row justify-between items-center text-[#FF8ABE]",
         isAuth ? "hidden" : ""
       )}
     >
       <div className="flex items-center space-x-10">
-        <span className="text-lg font-black">🎨 Libello</span>
-        <nav className="flex items-center space-x-4">
+        <Link className="text-2xl font-black" href="/">
+          wetbrush
+        </Link>
+        <nav className="flex items-center space-x-10 font-medium">
           <Link
-            className="text-black text-sm font-medium hover:text-gray-500 transition-colors"
+            className="text-sm font-medium hover:text-[#8450ff] transition-colors"
             href="/explore"
           >
             Explore
           </Link>
           <Link
-            className="text-black text-sm font-medium hover:text-gray-500 transition-colors"
+            className="text-sm font-medium hover:text-[#8450ff] transition-colors"
             href="/create"
           >
             Create
@@ -34,7 +36,7 @@ export function Header() {
       </div>
       <Link
         href="/login"
-        className="h-9 px-4 flex justify-center items-center bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-300 rounded-md text-black text-sm"
+        className="h-9 px-4 flex justify-center items-center bg-[#FF8ABE] hover:bg-[#FF8ABE]/90 transition-colors rounded-md text-white text-medium text-sm"
       >
         Login
       </Link>
