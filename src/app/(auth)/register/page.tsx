@@ -7,7 +7,9 @@ export default function Register() {
       <div className="h-screen bg-slate-100"></div>
       <div className="min-h-screen w-1/2 m-auto flex flex-col justify-center items-center space-y-6">
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl text-black font-bold">Welcome to Libello!</h1>
+          <h1 className="text-2xl text-black font-bold">
+            Welcome to <span className="text-pink-500">wetbrush</span>
+          </h1>
           <p className="text-sm text-slate-500 text-center">
             Enter a few details about yourself below
           </p>

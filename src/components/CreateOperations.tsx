@@ -53,7 +53,7 @@ export default function CreateOperations() {
     <main className="min-h-screen relative mt-12 flex flex-col items-center">
       <div className="w-1/2 mt-12 flex flex-col items-center spacy-y-4">
         <div className="flex flex-col items-center leading-none">
-          <h1 className="text-2xl font-bold">Create</h1>
+          <h1 className="text-2xl font-bold text-white">Create</h1>
           <p className="text-gray-500 font-medium">
             Generate your own coloring books
           </p>
@@ -61,7 +61,7 @@ export default function CreateOperations() {
         <form className="w-3/4 mt-6 flex space-x-2">
           <div className="relative flex-grow bg-gray-100 border border-gray-200 rounded-md">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <Zap color="gray" size={15} />
+              <Zap color="pink" size={15} />
             </span>
             <input
               className="h-full w-full py-2 text-sm bg-gray-100 rounded-md pl-7 transition-colors focus:outline-none focus:text-gray-900"
@@ -73,7 +73,7 @@ export default function CreateOperations() {
             />
           </div>
           <button
-            className="flex justify-center items-center bg-black text-white rounded-md text-sm font-medium h-10 w-[100px]"
+            className="flex justify-center items-center bg-[#8450ff] text-white rounded-md text-sm font-medium h-10 w-[100px]"
             onClick={handleSubmit}
           >
             {isLoading ? "Generating..." : "Generate"}

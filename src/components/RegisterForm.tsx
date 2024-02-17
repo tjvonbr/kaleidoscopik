@@ -22,28 +22,28 @@ export default function RegisterForm() {
   return (
     <form className="w-full flex flex-col space-y-2">
       <input
-        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm placeholder:text-slate-400 text-black"
+        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-slate-400 text-black"
         type="text"
         name="firstName"
         placeholder="First name"
         onChange={handleChange}
       />
       <input
-        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm placeholder:text-slate-400 text-black"
+        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-slate-400 text-black"
         type="text"
         name="lastName"
         placeholder="Last name"
         onChange={handleChange}
       />
       <input
-        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm placeholder:text-slate-400 text-black"
+        className="h-10 w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-slate-400 text-black"
         type="email"
         name="email"
         placeholder="Email"
         onChange={handleChange}
       />
       <button
-        className="w-full h-10 bg-[#0f172a] hover:bg-[#0f172a]/90 transition-colors text-white text-sm rounded-md font-medium"
+        className="w-full h-10 bg-pink-500 hover:bg-pink-500/90 transition-colors text-white text-sm rounded-md font-medium"
         onClick={handleSubmit}
       >
         Register
