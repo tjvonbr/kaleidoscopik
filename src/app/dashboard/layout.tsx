@@ -1,8 +1,7 @@
-import { notFound } from "next/navigation";
-
 import { dashboardConfig } from "@/config/dashboard";
-import { MainNav } from "@/components/MainNav";
 import { DashboardNav } from "@/components/DashboardNav";
+import { MainNav } from "@/components/MainNav";
+import { UserButton } from "@clerk/nextjs";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode;
@@ -16,7 +15,7 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} />
-          {/* Clerk user  */}
+          <UserButton />
         </div>
       </header>
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
