@@ -24,7 +24,8 @@ model User {
 
 model Illustration {
   id          String      @id @default(uuid())
-  prompt      String    
+  prompt      String
+  imageUrl    String  
   userId      String
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime    @default(now())
