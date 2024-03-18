@@ -6,6 +6,7 @@ import { z } from "zod";
 
 const generateImageSchema = z.object({
   prompt: z.string(),
+  imageUrl: z.string(),
 });
 
 export async function POST(req: NextRequest) {
@@ -31,8 +32,9 @@ export async function POST(req: NextRequest) {
 
     await prisma.illustration.create({
       data: {
+        imageUrl: body.imageUrl,
         prompt: body.prompt,
-        userId,
+        userId: userId,
       },
     });
 
